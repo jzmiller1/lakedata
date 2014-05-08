@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="container" method="post" action="">{%  csrf_token %}
+  <div class="row span8">
+      <h2 class="form-signin-heading">Contact Us</h2>
+		<div class="span3">
+			<input type="text" class="form-control span3float" placeholder="Name" name="name" id="id_name"required>
+			<input type="email" class="form-control span3float" placeholder="Email" name="email" id="id_email"required>
+			<input type="text" class="form-control span3float" placeholder="Subject" name="subject" id="id_subject"required>
+		</div>
+
+		<div class="span4">
+			<textarea class="form-control span5"  rows="6" placeholder="Message" name="message" id="id_message" required></textarea>
+		</div>
+
+        <div class="span6">
+            <button type="submit" class="btn btn-primary pull-left span2">Send</button>
+        </div>
+
+      </div>
+</form>
+{% endblock %}

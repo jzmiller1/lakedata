@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2> {{ project.name }}</h2>
+    <p>Project Creator: {{ project.name  }}</p>
+    <p>About Project Creator: {{ project.about_us }}</p>
+    <p>Project Name: {{ project.project_name }}</p>
+    <p>About Project: {{ project.project_description }}</p>
+    <a href="/" class="btn btn-large btn-primary">Return Home</a>
+{% endblock %}

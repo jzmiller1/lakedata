@@ -1,0 +1,98 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Lake Lanier Project</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "frontpage/bootstrap.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "frontpage/navbar.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "frontpage/signin.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "frontpage/bootstrap-responsive.css" %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Lake Project</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+	        <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                    <li><a href="/contactabout/1/">Robert Fuller</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphs <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'data:selectsample' %}">Line Graph by Site by Year</a></li>
+                <li><a href="{% url 'data:selectmultiyear' %}">Line Graph by Site by Multi-Year</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'data:sitemap' %}">Site Map</a></li>
+            <li><a href="{% url 'contactabout:contact' %}">Contact Us</a></li>
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.username %}
+                    <li><a href="/accounts/logout/">Log Out</a></li>
+                {% else %}
+                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="/accounts/register/">Register</a></li>
+                {% endif %}
+
+                {% if user.is_staff %}
+                    <li><a href="/admin/">Admin</a></li>
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+        {% block content %} {% endblock %}
+        </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{% static "frontpage/jquery.js" %}"></script>
+    <script src="{% static "frontpage/bootstrap.min.js" %}"></script>
+    <script src="{% static  "frontpage/html5shiv.js" %}></script>
+    <script src="{% static "frontpage/respond.min.js" %}></script>
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'frontpage/base.html' %}
+<html>
+{% block content %}
+    <header>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+        </script>
+    </header>
+
+    <form class=container method="post" action="">{%  csrf_token %}
+
+       <div class="row span3">
+             <h2 class="form-signin-heading span6">Please Select Location and Year</h2>
+
+             <select type="text" class="form-control span3float" placeholder="Location" name="site" id="id_site">
+                   {% for x,y in form.fields.site.choices %}
+                        <option value="{{ x }}">{{ y }}</option>
+                   {% endfor %}
+             </select>
+
+             <select type="date" required="date" class="form-control span3float" placeholder="2013" name="year" id="id_year">
+                   {% for x,y in form.fields.year.choices %}
+                        <option value="{{ x }}">{{ y }}</option>
+                   {% endfor %}
+             </select>
+
+             <button class="btn btn-lg btn-primary btn-block span3" type="submit">Submit</button>
+
+           <div class="row span7">
+                <h4>Beware that not every site will have data for a selected year.</h4>
+                <a href="/">Back to Homepage</a>
+           </div>
+       </div>
+    </form>
+{% endblock %}
+</html>
+
+
+
+
+
+

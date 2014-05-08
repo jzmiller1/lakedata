@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GChart Demo</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart", "treemap"]});
+    </script>
+    <script>
+        $(function(){
+            $("#get-data").on("click", function(){
+                alert(10);
+                $.getJSON("/ghcart-json/", function(data){
+                    alert(data);
+                    //custom_line_chart.draw()
+
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="decimal_chart">
+    {{ chart.as_html }}
+</div>
+</body>
+</html>
+

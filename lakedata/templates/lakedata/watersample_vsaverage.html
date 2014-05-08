@@ -1,0 +1,39 @@
+{% extends 'frontpage/base.html' %}
+<html>
+
+
+<center>
+    {% block content %}
+
+        <header>
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            </script>
+        </header>
+
+        <center><h1>{{ year }} {{ name }} Data</h1></center>
+
+        <center>
+            <a href="{% url 'data:selectmultiyear' %}">Select Another Year Range</a></br>
+            <a href="{% url 'data:selectsample' %}">Select Another Year</a></br>
+        </center>
+
+        {% for chart in charts %}
+            {{ chart.as_html }}
+            <center><p>Avg: {{ chart.avg|floatformat:2 }} &nbsp; &nbsp; Min: {{ chart.min|floatformat:2 }} &nbsp; &nbsp;
+                Max: {{ chart.max|floatformat:2 }} &nbsp; &nbsp; StdDev: {{ chart.std_dev|floatformat:2 }} &nbsp; &nbsp;
+                Var: {{ chart.var|floatformat:2 }} &nbsp; &nbsp; Samples: {{ chart.cnt|floatformat:"0" }}
+            </p></center><br>
+        {% endfor %}
+
+        <center>
+            <a href="{% url 'data:selectmultiyear' %}">Select A Multiple Year Range</a></br>
+            <a href="{% url 'data:selectsample' %}">Select A Single Year</a></br>
+        </center>
+
+    {% endblock %}
+</center>
+
+
+</html>
